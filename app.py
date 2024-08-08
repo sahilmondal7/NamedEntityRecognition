@@ -8,8 +8,9 @@ from spacy.util import get_package_path
 try:
     nlp = spacy.load("en_core_web_lg")
 except OSError:
-    st.info("Downloading the spaCy model. This will only happen once.")
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_lg"])
+    with st.spinner("Downloading the spaCy model. Please wait..."):
+        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_lg"])
+    st.success("Download complete! The model is now loaded.")
     nlp = spacy.load("en_core_web_lg")
     
 
