@@ -4,7 +4,6 @@ import os
 import subprocess
 from spacy.cli import download
 from spacy import displacy
-from spacy.util import get_package_path
 
 
 try:
