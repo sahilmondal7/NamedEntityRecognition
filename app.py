@@ -6,13 +6,12 @@ from spacy.util import get_package_path
 
 
 try:
-    model_path = get_package_path("en_core_web_lg")
+    nlp = spacy.load("en_core_web_lg")
 except OSError:
     st.info("Downloading the spaCy model. This will only happen once.")
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_lg"])
-    model_path = get_package_path("en_core_web_lg")
-
-nlp = spacy.load("en_core_web_lg")
+    nlp = spacy.load("en_core_web_lg")
+    
 
 st.set_page_config(page_title="Named Entity Recognition", page_icon="https://explosion.gallerycdn.vsassets.io/extensions/explosion/spacy-extension/1.0.1/1685718946744/Microsoft.VisualStudio.Services.Icons.Default")
 
