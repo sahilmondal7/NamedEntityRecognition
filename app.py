@@ -1,6 +1,8 @@
 import streamlit as st
 import spacy
+import os
 import subprocess
+from spacy.cli import download
 from spacy import displacy
 from spacy.util import get_package_path
 
@@ -9,7 +11,7 @@ try:
     nlp = spacy.load("en_core_web_lg")
 except OSError:
     with st.spinner("Downloading the spaCy model. Please wait..."):
-        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_lg"])
+        download("en_core_web_lg") 
     st.success("Download complete! The model is now loaded.")
     nlp = spacy.load("en_core_web_lg")
     
